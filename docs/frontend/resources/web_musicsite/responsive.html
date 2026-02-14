@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的音乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: url('../web_login/img/bj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部 */
+        .header {
+            margin-bottom: 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            height: 56px;
+            flex-wrap: nowrap;
+        }
+        
+        .logo {
+            flex-shrink: 0;
+        }
+        
+        .logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo a:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 40px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .banners {
+            display: flex;
+            gap: 8px;
+            flex-grow: 1;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .banner-item {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .banner-item img {
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            height: auto;
+            max-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .banner-item img:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 主要内容 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .sidebar h2 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            font-size: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .music-list {
+            list-style: none;
+        }
+        
+        .music-list li {
+            margin-bottom: 6px;
+        }
+        
+        .music-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .music-list a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transform: translateX(3px);
+        }
+        
+        .music-list a:active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(3px) scale(0.98);
+        }
+        
+        /* 内容区域 */
+        .content {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .music-card {
+            text-align: center;
+        }
+        
+        .music-title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .music-lyrics {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            line-height: 1.4;
+            text-align: left;
+            white-space: pre-wrap;
+            font-size: 14px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        
+        .music-cover {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .music-cover img {
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+        }
+        
+        .music-player {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .music-player audio {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+                padding: 6px 10px;
+                height: 48px;
+                flex-wrap: nowrap;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .banners {
+                gap: 6px;
+            }
+            
+            .banner-item img {
+                max-height: 35px;
+            }
+            
+            .sidebar h2 {
+                font-size: 18px;
+            }
+            
+            .music-title {
+                font-size: 18px;
+            }
+            
+            .music-cover img {
+                max-height: 250px;
+            }
+        }
+        
+        /* 小屏幕设备优化 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                margin-bottom: 12px;
+            }
+            
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+                padding: 5px 8px;
+                border-radius: 6px;
+                height: 44px;
+                flex-wrap: nowrap;
+            }
+            
+            .logo img {
+                height: 30px;
+            }
+            
+            .banners {
+                gap: 4px;
+            }
+            
+            .banner-item img {
+                max-height: 30px;
+            }
+            
+            .sidebar {
+                padding: 15px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .music-cover img {
+                max-height: 200px;
+            }
+            
+            .music-lyrics {
+                font-size: 14px;
+            }
+            
+            .sidebar h2 {
+                font-size: 16px;
+            }
+            
+            .sidebar-subtitle {
+                font-size: 12px;
+            }
+            
+            .music-list a {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+            
+            .music-title {
+                font-size: 16px;
+            }
+        }
+        
+        /* 返回按钮 */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 移动端按钮优化 */
+        @media (max-width: 768px) {
+            .back-btn {
+                padding: 14px 28px;
+                font-size: 16px;
+                min-width: 140px;
+            }
+        }
+    </style>
+    <script>
+        // 音乐数据
+        const musics = [
+            {
+                id: 1,
+                title: '刚好遇见你 - 李玉刚',
+                lyrics: '我们哭了 我们笑着\n我们抬头望天空 星星还亮着几颗\n我们唱着 时间的歌\n才懂得相互拥抱 到底是为了什么\n因为我刚好遇见你 留下足迹才美丽\n风吹花落泪如雨 因为不想分离\n因为刚好遇见你 留下十年的期许\n如果再相遇 我想我会记得你\n我们哭了 我们笑着\n我们抬头望天空 星星还亮着几颗\n我们唱着 时间的歌\n才懂得相互拥抱 到底是为了什么\n因为我刚好遇见你 留下足迹才美丽\n风吹花落泪如雨 因为不想分离\n因为刚好遇见你 留下十年的期许\n如果再相遇 我想我会记得你\n因为我刚好遇见你 留下足迹才美丽\n风吹花落泪如雨 因为不想分离\n因为刚好遇见你 留下十年的期许\n如果再相遇 我想我会记得你\n如果再相遇 我想我会记得你',
+                src: 'music/刚好遇见你-李玉刚.mp3',
+                cover: 'images/liukeyi.jpg'
+            },
+            {
+                id: 2,
+                title: '半壶纱 - 刘珂矣',
+                lyrics: '墨已入水 渡一池青花\n揽五分红霞 采竹回家\n悠悠风来 埋一地桑麻\n一身袈裟 把相思放下\n十里桃花 待嫁的年华\n凤冠的珍珠 挽进头发\n檀香拂过 玉镯弄轻纱\n空留一盏 芽色的清茶\n倘若我心中的山水 你眼中都看到\n我便一步一莲花祈祷\n怎知那浮生一片草 岁月催人老\n风月花鸟 一笑尘缘了',
+                src: 'music/半壶纱-刘珂矣.mp3',
+                cover: 'images/liukeyi.jpg'
+            },
+            {
+                id: 3,
+                title: '当你老了 - 赵照',
+                lyrics: '当你老了 头发白了 睡意昏沉\n当你老了 走不动了\n炉火旁打盹 回忆青春\n多少人曾爱你青春欢畅的时辰\n爱慕你的美丽 假意或真心\n只有一个人还爱你虔诚的灵魂\n爱你苍老的脸上的皱纹\n当你老了 眼眉低垂 灯火昏黄不定\n风吹过来 你的消息 这就是我心里的歌\n当你老了 头发白了 睡意昏沉\n当你老了 走不动了\n炉火旁打盹 回忆青春\n多少人曾爱你青春欢畅的时辰\n爱慕你的美丽 假意或真心\n只有一个人还爱你虔诚的灵魂\n爱你苍老的脸上的皱纹\n当你老了 眼眉低垂 灯火昏黄不定\n风吹过来 你的消息 这就是我心里的歌\n当我老了 我真希望 这首歌是唱给你的',
+                src: 'music/当你老了-赵照.mp3',
+                cover: 'images/liukeyi.jpg'
+            },
+            {
+                id: 4,
+                title: '心湖雨又风',
+                lyrics: '心湖雨又风\n心事一重重\n只为等待这一天\n只为等你展容颜\n上天不给这份缘\n仍苦苦相恋\n日日盼呀盼呀伴浮萍\n谁能怜我这份情\n夜夜梦呀梦呀只为你\n弱水只取一瓢饮\n朝朝望呀望呀愁容添\n相恋怎能不相怨\n暮暮念呀念呀年华远\n怪只怪那姻缘浅\n岁岁愿呀愿呀缘未尽\n期待春风绿湖心\n年年痴呀痴呀湿衣襟\n心湖雨又风',
+                src: 'music/心湖雨又风.mp3',
+                cover: 'images/liukeyi.jpg'
+            },
+            {
+                id: 5,
+                title: '江湖 - 罗文',
+                lyrics: '人间江湖 江湖人间\n江湖笑 恩怨了\n人过招 笑藏刀\n红尘笑 笑寂寥\n心太高 到不了\n明月照 路迢迢\n人会老 心不老\n爱不到 放不掉\n忘不了 你的好\n看似花非花 雾非雾\n滔滔江水留不住\n一身豪情壮志 铁傲骨\n原来英雄是孤独\n江湖笑 爱逍遥\n琴或萧 酒来倒\n仰天笑 全忘了\n潇洒如风 轻飘飘\n江湖笑 恩怨了\n人过招 笑藏刀\n红尘笑 笑寂寥\n心太高 到不了\n明月照 路迢迢\n人会老 心不老\n爱不到 放不掉\n忘不了 你的好\n看似花非花 雾非雾\n滔滔江水留不住\n一身豪情壮志 铁傲骨\n原来英雄是孤独\n江湖笑 爱逍遥\n琴或萧 酒来倒\n仰天笑 全忘了\n潇洒如风 轻飘飘\n江湖笑 爱逍遥\n爱或恨 都不要\n仰天笑 全忘了\n潇洒如风 轻飘飘',
+                src: 'music/江湖—罗文.mp3',
+                cover: 'images/liukeyi.jpg'
+            }
+        ];
+        
+        // DOM元素加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const musicListItems = document.querySelectorAll('.music-list a');
+            const musicTitle = document.querySelector('.music-title');
+            const musicLyrics = document.querySelector('.music-lyrics');
+            const musicCover = document.querySelector('.music-cover img');
+            const audioElement = document.querySelector('.music-player audio');
+            const audioSource = audioElement.querySelector('source');
+            
+            // 为每个音乐列表项添加点击事件
+            musicListItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取对应的音乐数据
+                    const music = musics[index];
+                    
+                    // 更新音乐标题和歌词
+                    musicTitle.textContent = music.title;
+                    musicLyrics.textContent = music.lyrics;
+                    
+                    // 更新音乐封面
+                    musicCover.src = music.cover;
+                    
+                    // 更新音频源
+                    audioSource.src = music.src;
+                    audioSource.type = 'audio/mp3';
+                    
+                    // 加载新音频
+                    audioElement.load();
+                    
+                    // 当音频加载完成后播放
+                    audioElement.addEventListener('loadeddata', function playAudio() {
+                        audioElement.play().catch(function(error) {
+                            console.log('播放错误:', error);
+                        });
+                        // 移除事件监听器，避免重复触发
+                        audioElement.removeEventListener('loadeddata', playAudio);
+                    });
+                    
+                    // 添加选中效果
+                    musicListItems.forEach(li => li.style.background = 'rgba(255, 255, 255, 0.1)');
+                    this.style.background = 'rgba(255, 255, 255, 0.3)';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img src="images/logo.jpg" alt="返回主页">
+                    </a>
+                </div>
+                <div class="banners">
+                    <div class="banner-item"><img src="images/banner.jpg"></div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 主要内容 -->
+        <div class="main-content">
+            <!-- 侧边栏 -->
+            <aside class="sidebar">
+                <h2><strong>音乐收藏</strong></h2>
+                <div class="sidebar-subtitle">--&gtMY music TOP10</div>
+                <ul class="music-list">
+                    <li><a href="#">刚好遇见你 - 李玉刚</a></li>
+                    <li><a href="#">半壶纱 - 刘珂矣</a></li>
+                    <li><a href="#">当你老了 - 赵照</a></li>
+                    <li><a href="#">心湖雨又风</a></li>
+                    <li><a href="#">江湖 - 罗文</a></li>
+                </ul>
+            </aside>
+            
+            <!-- 内容区域 -->
+            <main class="content">
+                <div class="music-card">
+                    <h1 class="music-title">半壶纱 - 刘珂矣</h1>
+                    <div class="music-lyrics">
+                        墨已入水 渡一池青花
+                        揽五分红霞 采竹回家
+                        悠悠风来 埋一地桑麻
+                        一身袈裟 把相思放下
+                        十里桃花 待嫁的年华
+                        凤冠的珍珠 挽进头发
+                        檀香拂过 玉镯弄轻纱
+                        空留一盏 芽色的清茶
+                        倘若我心中的山水 你眼中都看到
+                        我便一步一莲花祈祷
+                        怎知那浮生一片草 岁月催人老
+                        风月花鸟 一笑尘缘了
+                    </div>
+                    <div class="music-cover">
+                        <img src="images/liukeyi.jpg" alt="刘珂矣">
+                    </div>
+                    <div class="music-player">
+                        <audio controls>
+                            <source src="music/半壶纱-刘珂矣.mp3" type="audio/mp3">
+                            您的浏览器不支持音频播放。
+                        </audio>
+                    </div>
+                    <a href="/index.html" class="back-btn">返回主页</a>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

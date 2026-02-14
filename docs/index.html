@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="JesenY">
+    <meta name="keywords" content="导航页，浏览器导航，Jesen's web，学习资源">
+    <meta name="description" content="一个现代化的导航页，集成学习资源和工具，提供网址收藏、视频教程、音频资源等服务">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>JesenY | 站点收藏</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="frontend/css/styles.css">
+    <link rel="icon" href="frontend/resources/img/logo.jpg" type="image/jpeg">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="frontend/resources/img/logo.jpg" alt="网站logo">
+                    <span>JesenY</span>
+                </a>
+                
+                <!-- 桌面导航菜单 -->
+                <ul class="nav-menu">
+                    <li><a href="#navigation" class="nav-link"><i class="fas fa-bookmark"></i> 网址收藏 </a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"><i class="fas fa-tools"></i> 学习工具 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="https://www.runoob.com/">菜鸟教程</a>
+                            <a href="https://note.youdao.com/signIn/index.html">有道笔记</a>
+                            <a href="https://www.bilibili.com">哔哩哔哩</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"><i class="fas fa-layer-group"></i> 资源中心 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="frontend/resources/web_video/responsive.html">视频资源</a>
+                            <a href="frontend/resources/web_musicsite/responsive.html">音频资源</a>
+                            <a href="https://www.huya.com/521000">娱乐直播</a>
+                        </div>
+                    </li>
+                    <li><a href="frontend/resources/web_login/login.html" class="btn btn-primary"><i class="fas fa-user"></i> 账号登录 </a></li>
+                </ul>
+                
+                <!-- 移动端菜单按钮 -->
+                <button class="menu-toggle" aria-label="切换菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- 移动端菜单 -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#navigation"><span><i class="fas fa-bookmark"></i> 网址收藏 </span></a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="dropdown-toggle"><span><i class="fas fa-tools"></i> 学习工具 </span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="https://www.runoob.com/">菜鸟教程</a>
+                        <a href="https://note.youdao.com/signIn/index.html">有道笔记</a>
+                        <a href="https://www.bilibili.com">哔哩哔哩</a>
+                    </div>
+                </li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="dropdown-toggle"><span><i class="fas fa-layer-group"></i> 资源中心 </span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="frontend/resources/web_video/responsive.html">视频资源</a>
+                        <a href="frontend/resources/web_musicsite/responsive.html">音频资源</a>
+                        <a href="https://www.huya.com/521000">娱乐直播</a>
+                    </div>
+                </li>
+                <li><a href="frontend/resources/web_login/login.html"><span><i class="fas fa-user"></i> 账号登录 </span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>站点收藏</h1>
+                <p>一站式获取优质学习资源</p>
+                <div class="hero-features">
+                    <span class="feature-item">
+                        <i class="fas fa-bookmark"></i>
+                        <span>网址收藏</span>
+                    </span>
+                    <span class="feature-item">
+                        <i class="fas fa-layer-group"></i>
+                        <span>资源中心</span>
+                    </span>
+                    <span class="feature-item">
+                        <i class="fas fa-tools"></i>
+                        <span>学习工具</span>
+                    </span>
+                </div>
+                <div class="hero-quote">
+                    <p>"好好学习，天天向上"</p>
+                    <small>—— 毛主席</small>
+                </div>
+                <a href="https://jeseny.github.io/blog/" target="_blank" class="btn btn-primary">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+
+
+        <!-- 导航和搜索 -->
+        <section id="navigation" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-search"></i>
+                    导航与搜索
+                </h2>
+                
+                <!-- 搜索框 -->
+                <div class="search-card">
+                    <form class="search-form">
+                        <div class="search-input-group">
+                            <select class="search-engine">
+                                <option value="https://www.baidu.com/s?wd=">百度</option>
+                                <option value="https://www.google.com/search?q=">Google</option>
+                                <option value="https://www.bing.com/search?q=">Bing</option>
+                            </select>
+                            <input type="text" class="search-input" placeholder="请输入搜索内容" aria-label="搜索框">
+                            <button type="submit" class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 多媒体资源 -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-multiply"></i>
+                    多媒体资源
+                </h2>
+                
+                <div class="media-grid">
+                    <!-- 音频区域 -->
+                    <div class="media-card">
+                        <div class="media-header">
+                            <h3>
+                                <i class="fas fa-music"></i>
+                                音频资源
+                            </h3>
+                            <a href="frontend/resources/web_musicsite/responsive.html" class="more-link">更多</a>
+                        </div>
+                        <div class="media-content">
+                            <audio controls class="audio-player" preload="metadata" id="mainAudioPlayer">
+                                <source src="frontend/resources/mp3/horse.ogg" type="audio/ogg">
+                                您的浏览器不支持 audio 元素
+                             </audio>
+                            <ul class="audio-list" id="audioList">
+                                <li data-src="frontend/resources/web_musicsite/music/刚好遇见你-李玉刚.mp3">刚好遇见你 - 李玉刚</li>
+                                <li data-src="frontend/resources/web_musicsite/music/半壶纱-刘珂矣.mp3">半壶纱 - 刘珂矣</li>
+                                <li data-src="frontend/resources/web_musicsite/music/当你老了-赵照.mp3">当你老了 - 赵照</li>
+                                <li data-src="frontend/resources/web_musicsite/music/心湖雨又风.mp3">心湖雨又风</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频区域 -->
+                    <div class="media-card">
+                        <div class="media-header">
+                            <h3>
+                                <i class="fas fa-video"></i>
+                                视频资源
+                            </h3>
+                            <a href="frontend/resources/web_video/responsive.html" class="more-link">更多</a>
+                        </div>
+                        <div class="media-content">
+                            <video controls class="video-player" preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f3f4f6'/%3E%3Ctext x='200' y='120' font-family='Arial' font-size='16' fill='%236b7280' text-anchor='middle'%3E视频加载中...%3C/text%3E%3C/svg%3E">
+                                <source src="frontend/resources/mp4/Claps Opener.mp4" type="video/mp4">
+                                您的浏览器不支持 video 元素
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- 直播区域 -->
+                    <div class="media-card full-width">
+                        <div class="media-header">
+                            <h3>
+                                <i class="fas fa-tv"></i>
+                                娱乐直播
+                            </h3>
+                        </div>
+                        <div class="media-content">
+                            <iframe src="https://www.huya.com/521000" class="live-stream" title="虎牙直播间" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 收藏网站 -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-bookmark"></i>
+                    收藏网站
+                </h2>
+                
+                <!-- 控制栏 -->
+                <div class="bookmark-controls">
+                    <div class="left-controls">
+                        <button class="btn btn-primary add-bookmark-btn" id="addBookmarkBtn">
+                            <i class="fas fa-plus"></i>
+                            <span>添加链接</span>
+                        </button>
+                        <div class="import-export">
+                            <button class="btn btn-outline" id="importBtn">
+                                <i class="fas fa-upload"></i>
+                                <span>导入</span>
+                            </button>
+                            <button class="btn btn-outline" id="exportBtn">
+                                <i class="fas fa-download"></i>
+                                <span>导出</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <button class="btn view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                            <span>网格</span>
+                        </button>
+                        <button class="btn view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                            <span>列表</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 搜索和过滤 -->
+                <div class="bookmark-filters">
+                </div>
+                
+                <!-- 分类管理 -->
+                <div class="category-management">
+                    <h3>
+                        <i class="fas fa-folder"></i>
+                        <span>分类管理</span>
+                    </h3>
+                    <div class="categories-list" id="categoriesList">
+                        <div class="category-item active" data-category="all">
+                            <i class="fas fa-folder-open"></i>
+                            <span>所有链接</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <div class="category-item" data-category="development">
+                            <i class="fas fa-code"></i>
+                            <span>开发工具</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <div class="category-item" data-category="design">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>设计灵感</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <div class="category-item" data-category="learning">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>学习资源</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <div class="category-item" data-category="entertainment">
+                            <i class="fas fa-gamepad"></i>
+                            <span>娱乐休闲</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <div class="category-item" data-category="social">
+                            <i class="fas fa-users"></i>
+                            <span>社交网络</span>
+                            <span class="category-count">0</span>
+                        </div>
+                        <button class="add-category-btn" id="addCategoryBtn">
+                            <i class="fas fa-plus"></i>
+                            <span>添加分类</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 书签网格/列表 -->
+                <div class="bookmarks-container" id="bookmarksContainer">
+                    <div class="bookmarks-grid" id="bookmarksGrid">
+                        <!-- 书签项将由JavaScript动态渲染 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 添加链接模态框 -->
+        <div class="modal" id="addBookmarkModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>
+                        <i class="fas fa-plus"></i>
+                        <span>添加链接</span>
+                    </h3>
+                    <button class="close-btn" id="closeModalBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="bookmark-form" id="bookmarkForm">
+                    <div class="form-group">
+                        <label for="bookmarkUrl">URL</label>
+                        <input type="url" id="bookmarkUrl" name="url" required placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkTitle">标题</label>
+                        <input type="text" id="bookmarkTitle" name="title" required placeholder="网站标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkDescription">描述</label>
+                        <textarea id="bookmarkDescription" name="description" placeholder="网站描述"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkThumbnail">封面图（可选）</label>
+                        <input type="url" id="bookmarkThumbnail" name="thumbnail" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkCategory">分类</label>
+                        <select id="bookmarkCategory" name="category" required>
+                            <option value="development">开发工具</option>
+                            <option value="design">设计灵感</option>
+                            <option value="learning">学习资源</option>
+                            <option value="entertainment">娱乐休闲</option>
+                            <option value="social">社交网络</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookmarkTags">标签（用逗号分隔）</label>
+                        <input type="text" id="bookmarkTags" name="tags" placeholder="前端,免费,API">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelFormBtn">取消</button>
+                        <button type="submit" class="btn btn-primary">保存链接</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>网站导航</h3>
+                    <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="frontend/resources/web_video/responsive.html">视频资源</a></li>
+                    <li><a href="frontend/resources/web_musicsite/responsive.html">音频资源</a></li>
+                    <li><a href="https://www.huya.com/521000">娱乐直播</a></li>
+                </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>学习资源</h3>
+                    <ul>
+                        <li><a href="https://www.runoob.com/">菜鸟教程</a></li>
+                        <li><a href="https://note.youdao.com/signIn/index.html">有道笔记</a></li>
+                        <li><a href="https://www.bilibili.com">哔哩哔哩</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>合作伙伴</h3>
+                    <ul>
+                        <li><a href="https://v.qq.com">腾讯视频</a></li>
+                        <li><a href="https://www.huya.com">虎牙直播</a></li>
+                        <li><a href="https://www.douyu.com">斗鱼直播</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><a href="javascript:chatQQ('355776010')">商务合作QQ</a></li>
+                        <li><a href="mailto:jesen0913@gmail.com">联系邮箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 JesenY. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" aria-label="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="frontend/js/main.js" defer></script>
+    <script src="frontend/js/bookmark-system.js" defer></script>
+</body>
+
+</html>

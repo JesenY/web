@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐网站 - 半壶纱</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: url('../web_login/img/bj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .music-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .music-title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .music-lyrics {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        
+        .music-cover {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .music-cover img {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .music-player {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .music-player audio {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="music-card">
+            <h1 class="music-title">半壶纱 - 刘珂矣</h1>
+            <div class="music-lyrics">
+                墨已入水 渡一池青花
+                揽五分红霞 采竹回家
+                悠悠风来 埋一地桑麻
+                一身袈裟 把相思放下
+                十里桃花 待嫁的年华
+                凤冠的珍珠 挽进头发
+                檀香拂过 玉镯弄轻纱
+                空留一盏 芽色的清茶
+                倘若我心中的山水 你眼中都看到
+                我便一步一莲花祈祷
+                怎知那浮生一片草 岁月催人老
+                风月花鸟 一笑尘缘了
+                十里桃花 待嫁的年华
+                凤冠的珍珠 挽进头发
+                檀香拂过 玉镯弄轻纱
+                空留一盏 芽色的清茶
+                倘若我心中的山水 你眼中都看到
+                我便一步一莲花祈祷
+                怎知那浮生一片草 岁月催人老
+                风月花鸟 一笑尘缘了
+                倘若我心中的山水 你眼中都看到
+                我便一步一莲花祈祷
+                怎知那浮生一片草 岁月催人老
+                风月花鸟 一笑尘缘了
+                怎知那浮生一片草 岁月催人老
+                风月花鸟 一笑尘缘了
+            </div>
+            <div class="music-cover">
+                <img src="images/liukeyi.jpg" alt="刘珂矣">
+            </div>
+            <div class="music-player">
+                <audio src="music/半壶纱-刘珂矣.mp3" controls="controls" loop="loop">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

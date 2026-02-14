@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频网站 - 侧边栏</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: url('../web_login/img/bj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        .sidebar {
+            padding: 30px;
+            min-height: 100vh;
+        }
+        
+        .sidebar h2 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .video-list li {
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        .video-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .video-list a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2><strong>看更好看的视频</strong></h2>
+        <div class="sidebar-subtitle">--&gtMY video TOP10</div>
+        <ol class="video-list" type="1">
+            <li><a href="right1.html" target="right">水中漫舞</a></li>
+            <li><a href="right2.html" target="right">水中漫舞2</a></li>
+            <li><a href="right3.html" target="right">摆跨教学</a></li>
+            <li><a href="right4.html" target="right">mv4</a></li>
+        </ol>
+    </div>
+</body>
+</html>

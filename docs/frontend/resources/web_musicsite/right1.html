@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/gaoshengmei.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Microsoft Yahei', Arial, sans-serif;
+            color: white;
+        }
+        .music-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .music-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        .music-lyrics {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .music-lyrics p {
+            margin: 10px 0;
+        }
+        .music-images {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .music-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .music-images img:hover {
+            transform: scale(1.05);
+        }
+        .music-player {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .music-player audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="music-content">
+        <div class="music-title">活在歌声里</div>
+        <div class="music-lyrics">
+            <p>长路漫漫伴你闯</p>
+            <p>带一身胆色和热肠</p>
+            <p>寻自我觅真情</p>
+            <p>停步处视作家乡</p>
+            <p>投入命运万劫火</p>
+            <p>那得失怎么去量</p>
+            <p>驰马闯江湖</p>
+            <p>谁为往事再紧张</p>
+            <p>江湖中英雄汉</p>
+            <p>开心唱自由唱</p>
+            <p>谁是最高最强</p>
+            <p>我是谁从未理俗世欣不欣赏</p>
+            <p>迎入日月万里风</p>
+            <p>笑揖清风洗我狂</p>
+            <p>来日醉卧逍遥</p>
+            <p>宁愿锈蚀我缨枪</p>
+        </div>
+        <div class="music-images">
+            <img src="images/luowen.jpg" alt="罗文">
+            <img src="images/lianhuazhengba.jpg" alt="莲花争霸">
+        </div>
+        <div class="music-player">
+            <audio src="music/江湖—罗文.mp3" controls="controls" loop="loop">
+                您的浏览器不支持 HTML5 audio 标签。
+            </audio>
+        </div>
+    </div>
+</body>
+</html>

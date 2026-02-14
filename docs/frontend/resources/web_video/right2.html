@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频网站 - 水中舞蹈2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: url('../web_login/img/bj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .video-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-title {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-description {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .video-player {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .video-player video {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-card">
+            <h1 class="video-title">水中舞蹈2</h1>
+            <div class="video-description">
+                <p><strong>视频简介：</strong>这是水中舞蹈系列的第二部作品，继续展现了水中舞蹈的独特魅力和艺术美感。</p>
+            </div>
+            <div class="video-player">
+                <video width="800" height="500" controls>
+                    <source src="mv/movie1.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

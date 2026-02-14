@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="视频，mp4，影视，好看的视频收藏">
+    <title>我的视频</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: url('../web_login/img/bj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部 */
+        .header {
+            margin-bottom: 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            height: 56px;
+            flex-wrap: nowrap;
+        }
+        
+        .logo {
+            flex-shrink: 0;
+        }
+        
+        .logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo a:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 40px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .banners {
+            display: flex;
+            gap: 8px;
+            flex-grow: 1;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .banner-item {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .banner-item img {
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            height: auto;
+            max-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .banner-item img:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 主要内容 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .sidebar h2 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            font-size: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-list {
+            list-style: none;
+        }
+        
+        .video-list li {
+            margin-bottom: 6px;
+        }
+        
+        .video-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-list a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transform: translateX(3px);
+        }
+        
+        .video-list a:active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(3px) scale(0.98);
+        }
+        
+        /* 内容区域 */
+        .content {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-card {
+            text-align: center;
+        }
+        
+        .video-title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-description {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            line-height: 1.4;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .video-player {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .video-player video {
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+                padding: 6px 10px;
+                height: 48px;
+                flex-wrap: nowrap;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .banners {
+                gap: 6px;
+            }
+            
+            .banner-item img {
+                max-height: 35px;
+            }
+            
+            .sidebar h2 {
+                font-size: 18px;
+            }
+            
+            .video-title {
+                font-size: 18px;
+            }
+            
+            .video-player video {
+                max-height: 300px;
+            }
+        }
+        
+        /* 小屏幕设备优化 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                margin-bottom: 12px;
+            }
+            
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+                padding: 5px 8px;
+                border-radius: 6px;
+                height: 44px;
+                flex-wrap: nowrap;
+            }
+            
+            .logo img {
+                height: 30px;
+            }
+            
+            .banners {
+                gap: 4px;
+            }
+            
+            .banner-item img {
+                max-height: 30px;
+            }
+            
+            .sidebar {
+                padding: 15px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .video-player video {
+                max-height: 250px;
+            }
+            
+            .video-description {
+                font-size: 14px;
+            }
+            
+            .sidebar h2 {
+                font-size: 16px;
+            }
+            
+            .sidebar-subtitle {
+                font-size: 12px;
+            }
+            
+            .video-list a {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+            
+            .video-title {
+                font-size: 16px;
+            }
+        }
+        
+        /* 返回按钮 */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 移动端按钮优化 */
+        @media (max-width: 768px) {
+            .back-btn {
+                padding: 14px 28px;
+                font-size: 16px;
+                min-width: 140px;
+            }
+        }
+    </style>
+    <script>
+        // 视频数据
+        const videos = [
+            {
+                id: 1,
+                title: 'mv4',
+                description: '精彩的音乐MV，展现了丰富的视觉效果和舞蹈表演。',
+                src: '/frontend/resources/mp4/Claps Opener.mp4'
+            },
+            {
+                id: 2,
+                title: '水中漫舞',
+                description: '这是一段优美的水中舞蹈视频，展现了舞者在水中的优雅姿态和流畅动作。',
+                src: '/frontend/resources/mp4/movie.mp4'
+            },
+            {
+                id: 3,
+                title: '水中漫舞2',
+                description: '这是水中漫舞的续作，更加优美动人的舞蹈表演。',
+                src: '/frontend/resources/mp4/movie1.mp4'
+            },
+            {
+                id: 4,
+                title: '摆跨教学',
+                description: '详细的摆跨舞蹈教学视频，适合初学者学习。',
+                src: '/frontend/resources/mp4/movie2.mp4'
+            }
+        ];
+        
+        // DOM元素加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const videoListItems = document.querySelectorAll('.video-list a');
+            const videoTitle = document.querySelector('.video-title');
+            const videoDescription = document.querySelector('.video-description');
+            const videoElement = document.querySelector('.video-player video');
+            const videoSource = videoElement.querySelector('source');
+            
+            // 为每个视频列表项添加点击事件
+            videoListItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取对应的视频数据
+                    const video = videos[index];
+                    
+                    // 更新视频标题和描述
+                    videoTitle.textContent = video.title;
+                    videoDescription.innerHTML = `<p><strong>视频简介：</strong>${video.description}</p>`;
+                    
+                    // 更新视频源
+                    videoSource.src = video.src;
+                    videoSource.type = 'video/mp4';
+                    
+                    // 加载新视频
+                    videoElement.load();
+                    
+                    // 当视频加载完成后播放
+                    videoElement.addEventListener('loadeddata', function playVideo() {
+                        videoElement.play().catch(function(error) {
+                            console.log('播放错误:', error);
+                        });
+                        // 移除事件监听器，避免重复触发
+                        videoElement.removeEventListener('loadeddata', playVideo);
+                    });
+                    
+                    // 添加选中效果
+                    videoListItems.forEach(li => li.style.background = 'rgba(255, 255, 255, 0.1)');
+                    this.style.background = 'rgba(255, 255, 255, 0.3)';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img src="img/logo.jpeg" alt="返回主页">
+                    </a>
+                </div>
+                <div class="banners">
+                    <div class="banner-item"><img src="img/banner.gif"></div>
+                    <div class="banner-item"><img src="img/banner1.gif"></div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 主要内容 -->
+        <div class="main-content">
+            <!-- 侧边栏 -->
+            <aside class="sidebar">
+                <h2><strong>看更好看的视频</strong></h2>
+                <div class="sidebar-subtitle">--&gtMY video TOP10</div>
+                <ol class="video-list" type="1">
+                    <li><a href="#">mv4</a></li>
+                    <li><a href="#">水中漫舞</a></li>
+                    <li><a href="#">水中漫舞2</a></li>
+                    <li><a href="#">摆跨教学</a></li>
+                </ol>
+            </aside>
+            
+            <!-- 内容区域 -->
+            <main class="content">
+                <div class="video-card">
+                    <h1 class="video-title">mv4</h1>
+                    <div class="video-description">
+                        <p><strong>视频简介：</strong>精彩的音乐MV，展现了丰富的视觉效果和舞蹈表演。</p>
+                    </div>
+                    <div class="video-player">
+                        <video width="100%" max-width="600" controls>
+                            <source src="/frontend/resources/mp4/Claps Opener.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                    <a href="/index.html" class="back-btn">返回主页</a>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

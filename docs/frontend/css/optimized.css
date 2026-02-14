@@ -1,0 +1,94 @@
+/* 保留原有base.css的所有内容 */
+html,
+body,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea,
+p,
+th,
+td,
+form {
+    margin: 3;
+    padding: 0
+}
+
+body,
+input,
+button,
+select,
+textarea {
+    font: 12px/1.5 "Microsoft Yahei", "Helvetica Neue";
+    color: #1d2630;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga", "kern";
+}
+
+a {
+    color: rgb(27, 63, 99);
+    outline: medium none;
+    text-decoration: none;
+}
+
+/* 新增优化样式 - 渐进式增强 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+/* 卡片效果增强 */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 按钮增强 */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+/* 布局优化 */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 图片优化 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 渐进加载效果 */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

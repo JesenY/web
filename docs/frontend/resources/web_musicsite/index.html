@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <!--
+测试要注意——charset设置的是浏览器打开时使用的编码格式，所以你在保存网页的时候也要使用相应的编码格式。
+-->
+    <meta charset="utf-8">
+    <title>我的音乐</title>
+</head>
+
+<!-- 
+制作框架要注意——与普通网页不同，框架网页不需要body体，只分框架结构。
+-->
+<frameset rows="170,*" frameborder="2" framespacing="10">
+    <frame src="top.html" name="top" noresize="noresize" />
+    <!--
+这里的framespacing设置的是附加空间，不同浏览器显示效果会不同
+-->
+    <frameset cols="20%,70%" frameborder="2" framespacing="10">
+        <frame src="left.html" name="left" noresize="noresize" />
+        <frame src="right2.html" name="right" noresize="noresize" />
+    </frameset>
+</frameset>
+
+</html>
